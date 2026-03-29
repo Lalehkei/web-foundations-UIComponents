@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #589bde;
+    padding: 15px;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+    }
+}
+
+.card-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    display: grid;
+    gap: 10px;
+    max-width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: orange;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+ .contact-section {
+    padding: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+input, textarea, select {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid #589bde;
+} 
+
+button {
+    padding: 10px;
+    background: #589bde;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #285d93;
+}
