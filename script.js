@@ -1,4 +1,5 @@
 const cardsSection = document.querySelector(".card-section");
+const searchInput = document.querySelector("#search-input");
 
 const projects = [
   {
@@ -22,7 +23,11 @@ const projects = [
   }
 ];
 
-projects.forEach(project => {cardsSection.innerHTML +=  `
+
+function rerenderProjects(projectsToRender) {
+    cardsSection.innerHTML = "";
+
+    projectsToRender.forEach(project => {cardsSection.innerHTML +=  `
     <article class="card">
                 <img src=${project.img} alt="Project image"/>
                 <span class="badge">${project.category}</span>
@@ -31,5 +36,34 @@ projects.forEach(project => {cardsSection.innerHTML +=  `
                 <button>View Project</button>
             </article>`;
 });
+}
+
+rerenderProjects(projects);
+
+let timeout;
+
+searchInput.addEventListener("input", function () {
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    const searchText = searchInput.value.toLowerCase();
+
+    const filteredProject = projects.filter((project) => {
+      return project.title.toLowerCase().includes(searchText) || project.category.toLowerCase().includes(searchText);
+    });
+    rerenderProjects(filteredProject);
+  }, 500);
+});
+
+    
+
+
+
+
+
+
+
+
+
 
 
