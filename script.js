@@ -1,6 +1,8 @@
 const cardsSection = document.querySelector(".card-section");
 const searchInput = document.querySelector("#search-input");
 
+let timeout;
+
 const projects = [
   {
     title: "Portfolio Website",
@@ -25,9 +27,10 @@ const projects = [
 
 
 function rerenderProjects(projectsToRender) {
-    cardsSection.innerHTML = "";
+  let cards = "";
 
-    projectsToRender.forEach(project => {cardsSection.innerHTML +=  `
+  projectsToRender.forEach((project) => {
+    cards += `
     <article class="card">
                 <img src=${project.img} alt="Project image"/>
                 <span class="badge">${project.category}</span>
@@ -35,12 +38,14 @@ function rerenderProjects(projectsToRender) {
                 <p>${project.description}</p>
                 <button>View Project</button>
             </article>`;
-});
+  });
+
+  cardsSection.innerHTML = cards;
 }
 
 rerenderProjects(projects);
 
-let timeout;
+
 
 searchInput.addEventListener("input", function () {
   clearTimeout(timeout);
@@ -48,10 +53,10 @@ searchInput.addEventListener("input", function () {
   timeout = setTimeout(() => {
     const searchText = searchInput.value.toLowerCase();
 
-    const filteredProject = projects.filter((project) => {
+    const filteredProjects = projects.filter((project) => {
       return project.title.toLowerCase().includes(searchText) || project.category.toLowerCase().includes(searchText);
     });
-    rerenderProjects(filteredProject);
+    rerenderProjects(filteredProjects);
   }, 500);
 });
 
