@@ -7,10 +7,15 @@ let projects = [];
 
 
 async function loadProjects() {
+  try{
     const response = await fetch("https://raw.githubusercontent.com/Lalehkei/web-foundations-UIComponents/feature/fetch-api/data/projects.json");
     projects = await response.json();
 
     rerenderProjects(projects);
+  }catch(exception) {
+    console.error("Error fetching data: ", exception);
+  }
+    
 }
 
 loadProjects();
